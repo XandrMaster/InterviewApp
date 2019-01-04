@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="person"
+            type="rutta.aleksandr.android.interviewapp.domain.Person"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/status_imgv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            app:imageResource="@{person.statusIcon.iconId}"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/name_txtv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="8dp"
+            android:text="@{person.firstName + ' ' + person.lastName}"
+            android:textColor="@android:color/background_dark"
+            android:textSize="17sp"
+            app:layout_constraintEnd_toStartOf="@+id/avatar_imgv"
+            app:layout_constraintStart_toEndOf="@+id/status_imgv"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/sataus_msg_txtv"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginEnd="8dp"
+            android:text="@{person.statusMessage}"
+            android:textColor="@android:color/background_dark"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toStartOf="@+id/avatar_imgv"
+            app:layout_constraintStart_toEndOf="@+id/status_imgv"
+            app:layout_constraintTop_toBottomOf="@+id/name_txtv"/>
+
+        <ImageView
+            android:id="@+id/avatar_imgv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:src="@mipmap/contacts_list_avatar_unknown"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <View
+            android:id="@+id/divider_view"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/ag_list_dividerHeight"
+            android:background="@android:color/darker_gray"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

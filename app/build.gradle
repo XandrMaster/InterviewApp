@@ -1,0 +1,51 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion rootProject.compileSdkVersion
+    defaultConfig {
+        applicationId "rutta.aleksandr.android.interviewapp"
+        minSdkVersion rootProject.minSdkVersion
+        targetSdkVersion rootProject.targetSdkVersion
+        versionCode 1
+        versionName "1.0"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    dataBinding {
+        enabled = true
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+    sourceSets.test.resources.srcDirs += ["src/main/assets"]
+}
+
+dependencies {
+    implementation "androidx.appcompat:appcompat:$appcompatVersion"
+    implementation "androidx.constraintlayout:constraintlayout:$constraintVersion"
+    implementation "androidx.lifecycle:lifecycle-extensions:$lifecycleVersion"
+    implementation "com.google.code.gson:gson:$gsonVersion"
+    implementation "com.orhanobut:logger:$loggerVersion"
+    implementation "com.thoughtbot:expandablerecyclerview:$expandableRecyclerViewVersion"
+    implementation "com.google.android.material:material:$materialVersion"
+    // Rx
+    implementation "io.reactivex.rxjava2:rxandroid:$rxAndroidVersion"
+    // Dagger
+    implementation "com.google.dagger:dagger:$daggerVersion"
+    annotationProcessor "com.google.dagger:dagger-compiler:$daggerVersion"
+    // Tests
+    testImplementation "junit:junit:$junitVersion"
+    androidTestImplementation "androidx.test:runner:$testRunnerVersion"
+    androidTestImplementation "androidx.test.ext:junit:$testExtJunitVersion"
+    testImplementation "org.mockito:mockito-core:$testMockitoVersion"
+    androidTestImplementation "org.mockito:mockito-android:$testMockitoVersion"
+}
